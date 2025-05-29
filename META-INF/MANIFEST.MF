@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Eclipse-rpc-dc
+Bundle-SymbolicName: eclipse-rpc-dc;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: eclipse_rpc_dc.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui;bundle-version="3.207.100"
+Bundle-RequiredExecutionEnvironment: JavaSE-23
+Automatic-Module-Name: eclipse.rpc.dc
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,lib/discord-game-sdk4j-1.0.0.jar,lib/gson-2.13.1.jar
+Eclipse-LazyStart: false

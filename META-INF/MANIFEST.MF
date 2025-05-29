@@ -5,7 +5,10 @@ Bundle-SymbolicName: eclipse-rpc-dc;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: eclipse_rpc_dc.Activator
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.ui;bundle-version="3.207.100"
+ org.eclipse.ui,
+ org.eclipse.core.resources;bundle-version="3.22.100",
+ org.eclipse.ui.workbench.texteditor;bundle-version="3.19.100",
+ org.eclipse.jface.text;bundle-version="3.27.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-23
 Automatic-Module-Name: eclipse.rpc.dc
 Bundle-ActivationPolicy: lazy

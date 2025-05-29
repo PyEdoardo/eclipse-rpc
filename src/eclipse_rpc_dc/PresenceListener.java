@@ -13,7 +13,7 @@ public class PresenceListener extends Thread {
 	}
 	
 	public static void log(Exception e) {
-		var sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		sb.append("Erro: ").append(e.getMessage()).append(" Stack Trace: ").append(e.getStackTrace());
 		System.err.print(sb.toString());
 	}

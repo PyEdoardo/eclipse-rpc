@@ -8,8 +8,21 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
+/**
+ * ProprietiesInterface.java
+ * 
+ * Essa classe gerencia o carregamento e a troca de configurações (config.properties) do Plugin.
+ * Isso permite que o plugin armazene e recupere suas configurações de forma persistente
+ * entre as execuções.
+ */
 public class ProprietiesInterface {
 	
+	/**
+	 * Altera as propriedades do plugin.
+	 * @param lang Idioma do plugin.
+	 * @param ativo Se o plugin está ativo ou não.
+	 * @return true se as propriedades foram alteradas com sucesso, false caso contrário.
+	 */
 	public boolean changeProperties(String lang, boolean ativo) {
 	    Properties arquivo = new Properties();
 	    Path pathConfig = Paths.get(System.getProperty("user.home"), ".eclipse-rpc", "config.properties");
@@ -32,6 +45,10 @@ public class ProprietiesInterface {
 	    return false;
 	}
 	
+	/**
+	 * Classe interna para armazenar as propriedades do arquivo de configuração.
+	 * Contém o idioma e se o plugin está ativo ou não.
+	 */
 	public static class ArquivoProperties {
 		public String lang;
 		public boolean ativo;
@@ -41,8 +58,13 @@ public class ProprietiesInterface {
 		}
 	}
 	
+	/**
+	 * Carrega as propriedades do arquivo de configuração.
+	 * Por padrão o idioma é "english" e o plugin está ativo.
+	 * @return Um objeto ArquivoProperties contendo o idioma e se o plugin está ativo.
+	 */
 	public ArquivoProperties loadProperties() {
-		String lang = "english"; //Caso dê alguma excessão no arquivo ele vem setado inglês e ativo.
+		String lang = "english";
 		boolean ativo = true;
 		
 		Properties arquivo = new Properties();
@@ -60,6 +82,10 @@ public class ProprietiesInterface {
 		return new ArquivoProperties(lang, ativo);
 	}
 	
+	/**
+	 * Retorna as propriedades do arquivo de configuração.
+	 * @return Um objeto Properties contendo as propriedades do arquivo de configuração.
+	 */
 	public Properties returnProperties() {
 		Properties arquivo = new Properties();
 		Path pathConfig = Paths.get(System.getProperty("user.home"), ".eclipse-rpc", "config.properties");
@@ -74,6 +100,10 @@ public class ProprietiesInterface {
 		return arquivo;
 	}
 	
+	/**
+	 * Retorna o caminho do arquivo de configuração.
+	 * @return Um objeto Path representando o caminho do arquivo de configuração.
+	 */
 	public Path returnConfigPath() {
 		Path pathConfig = Paths.get(System.getProperty("user.home"), ".eclipse-rpc", "config.properties");
 		return pathConfig;

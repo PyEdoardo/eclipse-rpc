@@ -14,8 +14,19 @@ import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.swt.widgets.Display;
 
+/**
+ * EclipseListener.java
+ * 
+ * Essa classe é responsável por extrair informações sobre o projeto atual,
+ * arquivo sendo editado e o tipo de arquivo no Eclipse.
+ */
 public class EclipseListener {
 	
+	/**
+	 * Classe que representa as informações do projeto e do arquivo atual no Eclipse.
+	 * Contém o nome do projeto, nome do arquivo, extensão do arquivo, tipo de arquivo,
+	 * linha atual e total de linhas.
+	 */
 	public static class Projeto{
 		public String nomeProjeto;
 		public String fileName;
@@ -32,6 +43,11 @@ public class EclipseListener {
     			this.descricao = desc;
     		}
     	}
+        /**
+		 * Construtor da classe Projeto.
+		 * Inicializa a tabela de tipos de arquivos com ícones e descrições.
+		 * É usado apenas como um cache para associar a extensão do arquivo com um ícone e descrição.
+		 */
         public Projeto() {
         	tabela.put("java", new Arquivo("iconjava", "Java Class")); //Tem img
         	tabela.put("xml", new Arquivo("iconxml", "XML")); //Tem img
@@ -50,6 +66,14 @@ public class EclipseListener {
         }
 	}
 	
+	/**
+	 * Método estático que extrai informações do projeto atual e do arquivo sendo editado no Eclipse.
+	 * Ele coleta o nome do projeto, nome do arquivo, extensão do arquivo, tipo de arquivo,
+	 * linha atual e total de linhas.
+	 * 
+	 * @return Um objeto Projeto contendo as informações extraídas.
+	 * @throws Exception Se ocorrer algum erro durante a extração das informações.
+	 */
 	public static Projeto extract() {
 	    Projeto info = new Projeto();
 
@@ -115,6 +139,13 @@ public class EclipseListener {
 	    return info;
 	}
 	
+	/**
+	 * Método estático que retorna as informações do arquivo atual baseado na extensão do arquivo.
+	 * Ele utiliza a tabela de tipos de arquivos definida na classe Projeto para retornar o ícone e descrição apropriados.
+	 * 
+	 * @param proj O objeto Projeto contendo as informações do arquivo atual.
+	 * @return Um objeto Arquivo contendo o ícone e descrição do tipo de arquivo.
+	 */
 	public static eclipse_rpc_dc.eclipse.EclipseListener.Projeto.Arquivo infoArquivo(Projeto proj) {
 		if (proj.extension.equalsIgnoreCase("interface")) {
 			return proj.tabela.get("interface");

@@ -9,7 +9,17 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
 import eclipse_rpc_dc.lang.I18n;
+import eclipse_rpc_dc.log.Logger;
 
+/**
+ * Classe que representa a janela de configurações do plugin Eclipse RPC.
+ * Contém opções para selecionar o idioma e ativar/desativar o RPC.
+ * Esta classe estende PreferencePage e implementa IWorkbenchPreferencePage
+ * para integrar com o sistema de preferências do Eclipse.
+ * 
+ *  @Implements IWorkbenchPreferencePage
+ *  @Extends PreferencePage
+ */
 public class ConfigWindow extends PreferencePage implements IWorkbenchPreferencePage {
 
     private Combo languageCombo;
@@ -19,8 +29,17 @@ public class ConfigWindow extends PreferencePage implements IWorkbenchPreference
 
     public ConfigWindow() {
         super("Configurações do Plugin Eclipse RPC");
+        Logger.info(I18n.get("log.running"));
     }
-
+    
+    /**
+	 * Cria o conteúdo da página de preferências.
+	 * Aqui, criamos os componentes da interface, como Combo para seleção de idioma
+	 * e Button para ativar/desativar o RPC.
+	 * 
+	 * @param parent O composite pai onde os componentes serão adicionados.
+	 * @return O composite contendo os componentes da página de preferências.
+	 */
     @Override
     protected Control createContents(Composite parent) {
         ProprietiesInterface.ArquivoProperties props = propsI.loadProperties();
@@ -75,6 +94,13 @@ public class ConfigWindow extends PreferencePage implements IWorkbenchPreference
         return container;
     }
 
+    /**
+	 * Método chamado quando o usuário clica no botão "OK" na janela de preferências.
+	 * Aqui, obtemos o idioma selecionado e se o RPC está ativado ou não,
+	 * e então atualizamos as propriedades do plugin.
+	 * 
+	 * @return true se as alterações foram aplicadas com sucesso, false caso contrário.
+	 */
     @Override
     public boolean performOk() {
     	String selected = languageCombo.getText();
@@ -91,12 +117,17 @@ public class ConfigWindow extends PreferencePage implements IWorkbenchPreference
     	} else {
     	    selectedLang = "en";  // inglês
     	}
-
+    	
         boolean rpcEnabled = rpcToggleButton.getSelection();
         propsI.changeProperties(selectedLang, rpcEnabled);
+        Logger.info(I18n.get("log.lang.changed") + selectedLang);
         return true;
     }
-
+    
+    /**
+	 * Método chamado quando o usuário clica no botão "Restaurar Padrões" na janela de preferências.
+	 * Aqui, restauramos os valores padrão para o idioma e o estado do RPC.
+	 */
     @Override
     protected void performDefaults() {
         languageCombo.select(1); // padrão: Inglês
@@ -104,8 +135,11 @@ public class ConfigWindow extends PreferencePage implements IWorkbenchPreference
         super.performDefaults();
     }
 
+    /**
+     * Não faz nada neste método, pois não precisamos de inicialização específica, mas precisa implementar.
+     */
     @Override
     public void init(IWorkbench workbench) {
-        // Nenhuma ação necessária
+        
     }
 }

@@ -41,6 +41,17 @@ Após compilar o jar ou baixar via releases, coloque o arquivo .jar na pasta `dr
 	- Java 8+
 	- Eclipse IDE
 	- Discord com Rich Presence ativado
+	
+## 📝 Notas sobre o plugin
+Às vezes o idioma pode demorar um pouco para mudar após ser trocado nas configurações. Isso acontece provavelmente por conta de uma pequena lentidão de I/O ao carregar os arquivos de tradução ou algum atraso no pipe entre o Eclipse e o Discord. Mas nada que atrapalhe demais: só de abrir novamente a janela de configurações o idioma já se atualiza corretamente. 😉
+Irei corrigir isso em breve, mas por enquanto é só um detalhe.
+
+## ⚠️ Observações Técnicas
+	- Este projeto só compila corretamente com Java 8, então certifique-se de estar usando essa versão na sua IDE ou pipeline.
+
+	- Ainda faltam algumas imagens do Rich Presence, pois estou estudando e finalizando os testes aos poucos.
+
+	- A tradução também está sendo concluída gradualmente, então algumas partes podem não estar traduzidas 100%, mas o essencial já está funcionando bem.
 
 ## 📃 Licença
 Este projeto é licenciado sob a Apache License.

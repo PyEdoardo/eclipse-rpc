@@ -16,7 +16,7 @@ Um plugin leve para Eclipse que mostra no seu Discord o que você está programa
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone https://github.com/PyEdoardo/eclipse-rpc.git
 Abra no Eclipse como um projeto de plugin (ou Java normal, se preferir)
 
 Compile e gere o .jar pela sua IDE ou via terminal usando:

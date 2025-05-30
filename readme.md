@@ -46,5 +46,5 @@ Após compilar o jar ou baixar via releases, coloque o arquivo .jar na pasta `dr
 Este projeto é licenciado sob a Apache License.
 
 ## ☕ Bibliotecas vendorizadas
-- [Google gson](https://github.com/google/gson)
+- [Google GSON](https://github.com/google/gson)
 - [Discord Game SDK4J](https://github.com/JnCrMx/discord-game-sdk4j)

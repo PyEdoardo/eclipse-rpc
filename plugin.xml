@@ -5,4 +5,12 @@
       <startup
             class="eclipse_rpc_dc.Activator" />
    </extension>
+   <extension
+     point="org.eclipse.ui.preferencePages">
+  <page
+        id="eclipse_rpc_dc.configWindow"
+        name="Eclipse RPC"
+        class="eclipse_rpc_dc.config.ConfigWindow">
+  </page>
+</extension>
 </plugin>

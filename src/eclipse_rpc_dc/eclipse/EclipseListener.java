@@ -1,9 +1,7 @@
-package eclipse_rpc_dc;
+package eclipse_rpc_dc.eclipse;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.swing.JOptionPane;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.text.IDocument;
@@ -35,19 +33,19 @@ public class EclipseListener {
     		}
     	}
         public Projeto() {
-        	tabela.put("java", new Arquivo("iconjava", "Java Class"));
-        	tabela.put("xml", new Arquivo("iconxml", "XML"));
-        	tabela.put("txt", new Arquivo("icontxt", "Text File"));
-        	tabela.put("json", new Arquivo("iconjson", "JSON"));
-        	tabela.put("yml", new Arquivo("iconyml", "YML"));
+        	tabela.put("java", new Arquivo("iconjava", "Java Class")); //Tem img
+        	tabela.put("xml", new Arquivo("iconxml", "XML")); //Tem img
+        	tabela.put("txt", new Arquivo("icontxt", "Text File")); //Tem img
+        	tabela.put("json", new Arquivo("iconjson", "JSON")); //Tem img
+        	tabela.put("yml", new Arquivo("iconyaml", "YML")); //Tem img
         	tabela.put("proprieties", new Arquivo("iconproprieties", "Proprieties"));
         	tabela.put("md", new Arquivo("iconmd", "Markdown"));
         	tabela.put("kt", new Arquivo("iconkt", "Kotlin Class"));
         	tabela.put("default", new Arquivo("iconjava", "Sleeping.."));
-        	tabela.put("enum", new Arquivo("iconenum", "Enumeration"));
-        	tabela.put("abstract", new Arquivo("iconabstract", "Abstract Class"));
-        	tabela.put("interface", new Arquivo("iconinterface", "Interface"));
-        	tabela.put("record", new Arquivo("iconrecord", "Record Class"));
+        	tabela.put("enum", new Arquivo("iconenum", "Enumeration")); //Tem img
+        	tabela.put("abstract", new Arquivo("iconabstract", "Abstract Class")); //Tem img
+        	tabela.put("interface", new Arquivo("iconinterface", "Interface")); //Tem img
+        	tabela.put("record", new Arquivo("iconrecord", "Record Class")); //Tem img
         	tabela.put("annotation", new Arquivo("iconannotation", "Annotation Interface"));
         }
 	}
@@ -100,8 +98,14 @@ public class EclipseListener {
 	                    info.extension = "class";
 	                    System.out.println("é classe");
 	                	}
+	                else {
+	                	info.extension = "java";
+	                	}
 	            	}
-	                else if (!file.getFileExtension().equalsIgnoreCase("java")) {
+//	                else if (!file.getFileExtension().equalsIgnoreCase("java")) {
+//	                	info.extension = file.getFileExtension();
+//	                }
+	                else {
 	                	info.extension = file.getFileExtension();
 	                }
 	            }
@@ -111,26 +115,40 @@ public class EclipseListener {
 	    return info;
 	}
 	
-	public static eclipse_rpc_dc.EclipseListener.Projeto.Arquivo infoArquivo(Projeto proj) {
-		if (proj.extension == "interface") {
+	public static eclipse_rpc_dc.eclipse.EclipseListener.Projeto.Arquivo infoArquivo(Projeto proj) {
+		if (proj.extension.equalsIgnoreCase("interface")) {
 			return proj.tabela.get("interface");
 		}
-		else if (proj.extension == "enum") {
+		else if (proj.extension.equalsIgnoreCase("enum")) {
 			return proj.tabela.get("enum");
 		}
-		else if (proj.extension == "record") {
+		else if (proj.extension.equalsIgnoreCase("record")) {
 			return proj.tabela.get("record");
 		}
-		else if (proj.extension == "abstract class") {
+		else if (proj.extension.equalsIgnoreCase("abstract class")) {
 			return proj.tabela.get("abstract");
 		}
-		else if (proj.extension == "class") {
+		else if (proj.extension.equalsIgnoreCase("class")) {
 			return proj.tabela.get("java");
 		}
-		else if (proj.extension == "txt") {
+		else if (proj.extension.equalsIgnoreCase("txt")) {
 			return proj.tabela.get("txt");
 		}
-		
+		else if (proj.extension.equalsIgnoreCase("json")) {
+			return proj.tabela.get("json");
+		}
+		else if (proj.extension.equalsIgnoreCase("annotation")) {
+			return proj.tabela.get("annotation");
+		}
+		else if (proj.extension.equalsIgnoreCase("xml")) {
+			return proj.tabela.get("xml");
+		}
+		else if (proj.extension.equalsIgnoreCase("yml")) {
+			return proj.tabela.get("yml");
+		}
+		else if (proj.extension.equalsIgnoreCase("yaml")) {
+			return proj.tabela.get("yml");
+		}
 		else {
 			return proj.tabela.get("default");
 		}

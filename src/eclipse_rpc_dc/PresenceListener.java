@@ -1,5 +1,9 @@
 package eclipse_rpc_dc;
 
+import java.io.IOException;
+
+import eclipse_rpc_dc.discord.DiscordHandler;
+
 public class PresenceListener extends Thread {
 	@Override
 	public void run() {
@@ -7,7 +11,7 @@ public class PresenceListener extends Thread {
 			DiscordHandler.start();
 			System.out.println("Plugin Iniciado!");
 		}
-		catch (Exception e) {
+		catch (IOException e) {
 			log(e);
 		}
 	}
